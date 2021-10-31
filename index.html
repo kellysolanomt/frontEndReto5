@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProyectoPatinetas</title>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/peticiones.js" type="text/javascript"></script>
+  <script src="js/funciones.js" type="text/javascript"></script>
+  <script src="js/CRUD.js" type="text/javascript"></script>
+
+</head>
+
+<!-- PARA NAVEGACION -->
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">MINTIC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              DETALLE
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('contenidoCategory');">CATEGORIA</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('contenidoSkate');">PATINETA</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('contenidoClient');">CLIENTE</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('contenidoReservation');">RESERVACION</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('contenidoMessage');">MENSAJE</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('contenidoAdmin');">ADMIN</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              CREAR
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('enviarDatosCategoria');">CATEGORIA</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('enviarDatosSkate');">PATINETA</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('enviarDatosCliente');">CLIENTE</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('enviarDatosReserva');">RESERVACION</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('enviarDatosMensaje');">MENSAJE</a></li>
+              <li><a class="dropdown-item" href="#" onclick="mostrarDiv('enviarDatosAdministrator');">ADMIN</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              MODIFICAR
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('modificarDatosCategoria', 'contenidoCategory');">CATEGORIA</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('modificarDatosSkate', 'contenidoSkate');">PATINETA</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('modificarDatosCliente', 'contenidoClient');">CLIENTE</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('modificarDatosReserva', 'contenidoReservation');">RESERVACION</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('modificarDatosMensaje', 'contenidoMessage');">MENSAJE</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('modificarDatosAdministrator','contenidoAdmin');">ADMIN</a></li>
+
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              ELIMINAR
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('eliminarDatosMensaje', 'contenidoMessage');">MENSAJE</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('eliminarDatosReserva', 'contenidoReservation');">RESERVACION</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('eliminarDatosCliente', 'contenidoClient');">CLIENTE</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('eliminarDatosSkate', 'contenidoSkate');">PATINETA</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('eliminarDatosCategoria', 'contenidoCategory');">CATEGORIA</a></li>
+              <li><a class="dropdown-item" href="#"
+                  onclick="mostrarDiv('eliminarDatosAdministrator','contenidoAdmin');">ADMIN</a></li>
+
+            </ul>
+          </li>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  INFORMES
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#" onclick="mostrarDiv('conteoReservas');">CONTEO DE RESERVAS</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#" onclick="mostrarDiv('completadasVsCanceladas');">RESERVAS
+                      COMPLETADAS VS CANCELADAS</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="mostrarDiv('mejoresClientes');">TOP MEJORES
+                      CLIENTES</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+      </div>
+  </nav>
+
+  <!-- PARA OBTENER INFORMACION -->
+
+  <div class="container-fluid">
+    <div id="contenidoSkate" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+      <h1>Informacion de patinetas</h1>
+      <table id="contenidoSkateTable" class="table table-hover table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:center;">ID</th>
+            <th scope="col" style="text-align:center;">NOMBRE</th>
+            <th scope="col" style="text-align:center;">MARCA</th>
+            <th scope="col" style="text-align:center;">MODELO</th>
+            <th scope="col" style="text-align:center;">DESCRIPCION</th>
+            <th scope="col" style="text-align:center;">CATEGORIA</th>
+
+          </tr>
+        </thead>
+        <tbody id="skateBody">
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary"
+          onclick="CRUD('receiveData', '/api/Skate/all', 'contenidoSkateTable');">
+          Información Patineta
+        </button>
+      </div>
+    </div>
+    <div id="contenidoClient" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+      <h1>Informacion de Cliente</h1>
+      <table id="contenidoClientTable" class="table table-hover table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:center;">ID</th>
+            <th scope="col" style="text-align:center;">E-MAIL</th>
+            <th scope="col" style="text-align:center;">CONTRASEÑA</th>
+            <th scope="col" style="text-align:center;">NOMBRE</th>
+            <th scope="col" style="text-align:center;">EDAD</th>
+
+          </tr>
+        </thead>
+        <tbody id="clientBody">
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary"
+          onclick="CRUD('receiveData', '/api/Client/all', 'contenidoClientTable');">
+          Información Cliente
+        </button>
+      </div>
+    </div>
+    <div id="contenidoMessage" name='formulario'  class="table-responsive col-sm-6" style="display: none;">
+      <h1>Información Mensaje</h1>
+      <table id="contenidoMensajeTable" class="table table-hover table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:center;">ID</th>
+            <th scope="col" style="text-align:center;">MENSAJE</th>
+            <th scope="col" style="text-align:center;">ID PATINETA</th>
+            <th scope="col" style="text-align:center;">ID CLIENTE</th>
+          </tr>
+        </thead>
+        <tbody id="messageBody">
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary"
+          onclick="CRUD('receiveData', '/api/Message/all', 'contenidoMensajeTable');">
+          Información Mensaje
+        </button>
+      </div>
+    </div>
+    <div id="contenidoReservation" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+      <h1>Información Reservación</h1>
+      <table id="contenidoReservationTable" class="table table-hover table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:center;">ID</th>
+            <th scope="col" style="text-align:center;">DIA INICIO</th>
+            <th scope='col' style="text-align:center;">DIA DEVOLUCION</th>
+            <th scope='col' style="text-align:center;">ESTADO</th>
+            <th scope='col' style="text-align:center;">ID PATINETA</th>
+            <th scope='col' style="text-align:center;">ID CLIENTE</th>
+            <th scope='col' style="text-align:center;">PUNTAJE</th>
+          </tr>
+        </thead>
+        <tbody id="reservationBody">
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary"
+          onclick="CRUD('receiveData', '/api/Reservation/all', 'contenidoReservationTable');">
+          Información Reservación
+        </button>
+      </div>
+    </div>
+
+    <div id="contenidoCategory" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+      <h1>Información Categoria</h1>
+      <table id="contenidoCategoryTable" class="table table-hover table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:center;">ID</th>
+            <th scope="col" style="text-align:center;">NOMBRE</th>
+            <th scope='col' style="text-align:center;">DESCRIPCION</th>
+            <th scope='col' style="text-align:center;">ID PATINETA</th>
+          </tr>
+        </thead>
+        <tbody id="categoryBody">
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary"
+          onclick="CRUD('receiveData', '/api/Category/all', 'contenidoCategoryTable');">
+          Información Categoria
+        </button>
+      </div>
+    </div>
+
+    <div id="contenidoScore" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+      <h1>Información puntaje patineta</h1>
+      <table id="contenidoScoreTable" class="table table-hover table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:center;">ID PUNTAJE</th>
+            <th scope="col" style="text-align:center;">MENSAJE</th>
+            <th scope='col' style="text-align:center;">CALIFICACION</th>
+            <th scope='col' style="text-align:center;">ID RESERVA</th>
+          </tr>
+        </thead>
+        <tbody id="scoreBody">
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary"
+          onclick="CRUD('receiveData', '/api/Score/all', 'contenidoScoreTable');">
+          Información Puntaje
+        </button>
+      </div>
+    </div>
+
+    <div id="contenidoAdmin" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+      <h1>Información Administrador</h1>
+      <table id="contenidoAdminTable" class="table table-hover table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:center;">ID ADMIN</th>
+            <th scope="col" style="text-align:center;">NOMBRE</th>
+            <th scope='col' style="text-align:center;">E-MAIL</th>
+            <th scope='col' style="text-align:center;">CONTRASEÑA</th>
+          </tr>
+        </thead>
+        <tbody id="adminBody">
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary"
+          onclick="CRUD('receiveData', '/api/Admin/all', 'contenidoAdminTable');">
+          Información Administrador
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONTENIDO PARA CREAR FORMULARIO -->
+
+  <div id="enviarDatosSkate" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Crear patineta</h1>
+    <table id="enviarDatosSkateTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <td><input type="text" class="form-control" id="txtNameSkate"></td>
+        </tr>
+        <tr>
+          <th scope="col">MARCA</th>
+          <td><input type="text" class="form-control" id="txtBrandSkate"></td>
+        </tr>
+        <th scope="col">MODELO</th>
+        <td><input type="number" class="form-control" id="txtYearSkate"></td>
+        <tr>
+          <th scope="col">DESCRIPCION</th>
+          <td><input type="text" class="form-control" id="txtDescriptionSkate"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID CATEGORIA</th>
+          <td><input type="number" class="form-control" id="txtCategorySkate"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button id='btnSkateCrear' type="button" class="btn btn-primary"
+        onclick="CRUD('crearSkate', '/api/Skate/save', 'enviarDatosSkateTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+  <!-- FORMULARIO CLIENTE -->
+  <div id="enviarDatosCliente" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Crear cliente</h1>
+    <table id="enviarDatosClienteTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <td><input type="text" class="form-control" id="txtNameClient"></td>
+        </tr>
+        <tr>
+          <th scope="col">EMAIL</th>
+          <td><input type="text" class="form-control" id="txtEmailClient"></td>
+        </tr>
+        <tr>
+          <th scope="col">CONTRASEÑA</th>
+          <td><input type="password" class="form-control" id="txtPasswordClient"></td>
+        </tr>
+        <tr>
+          <th scope="col">EDAD</th>
+          <td><input type="number" class="form-control" id="txtAgeClient"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button id='btnClienteCrear' type="button" class="btn btn-primary"
+        onclick="CRUD('crearCliente', '/api/Client/save', 'contenidoSkateTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+  <!-- FORMULARIO MENSAJE -->
+  <div id="enviarDatosMensaje" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Crear mensaje</h1>
+    <table id="enviarDatosMensajeTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">ID CLIENTE</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdClienteMensaje"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID PATINETA</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdSkateMensaje"></td>
+        </tr>
+        <tr>
+          <th scope="col">MENSAJE</th>
+          <td><input type="text" class="form-control" id="txtTextMensaje"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('crearMensaje', '/api/Message/save', 'contenidoSkateTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- FORMULARIO RESERVA -->
+  <div id="enviarDatosReserva" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Crear reserva</h1>
+    <table id="enviarDatosReservaTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">DIA INICIO</th>
+          <td><input type="date" class="form-control col-xs-2" id="txtStartDate"></td>
+        </tr>
+        <tr>
+          <th scope="col">DIA DEVOLUCION</th>
+          <td><input type="date" class="form-control" id="txtDevolucionDate"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID CLIENTE</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtClientId"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID PATINETA</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtSkateId"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('crearReserva', '/api/Reservation/save', 'contenidoReservaTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- FORMULARIO CATEGORIA -->
+  <div id="enviarDatosCategoria" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Crear categoria</h1>
+    <table id="enviarDatosCategoriaTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <td><input type="text" class="form-control col-xs-2" id="txtCategoryName"></td>
+        </tr>
+        <tr>
+          <th scope="col">DESCRIPCION</th>
+          <td><input type="text" class="form-control" id="txtCategoryDescription"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('crearCategoria', '/api/Category/save', 'contenidoCategoriaTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+  <!-- FORMULARIO ADMINISTRADORES -->
+  <div id="enviarDatosAdministrator" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Crear usuario administrador</h1>
+    <table id="enviarDatosAdministratorTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <td><input type="text" class="form-control col-xs-2" id="txtAdminName"></td>
+        </tr>
+        <tr>
+          <th scope="col">EMAIL</th>
+          <td><input type="email" class="form-control" id="txtAdminEmail"></td>
+        </tr>
+        <tr>
+          <th scope="col">CONTRASEÑA</th>
+          <td><input type="password" class="form-control" id="txtAdminPassword"></td>
+        </tr>
+
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('crearAdministrator', '/api/Admin/save', 'contenidoAdministratorTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODIFICAR SKATE -->
+
+  <div id="modificarDatosSkate" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Modificar información patineta</h1>
+    <table id="modificarDatosSkateTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">MARCA</th>
+          <td><input type="text" class="form-control" id="txtBrandModificarSkate"></td>
+        </tr>
+        <th scope="col">MODELO</th>
+        <td><input type="number" class="form-control" id="txtModelModificarSkate"></td>
+        <tr>
+          <th scope="col">ID CATEGORIA</th>
+          <td><input type="number" class="form-control" id="txtCategoryModificarSkate"></td>
+        </tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <td><input type="text" class="form-control" id="txtNameModificarSkate"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control" id="txtIdSModificarSkate"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button id='btnSkateCrear' type="button" class="btn btn-primary"
+        onclick="CRUD('modificarSkate', '/api/Skate/update', 'enviarDatosSkateTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODIFICAR CLIENTE -->
+
+  <div id="modificarDatosCliente" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Modificar informacion cliente</h1>
+    <table id="modificarDatosClienteTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <td><input type="text" class="form-control" id="txtNameModificarClient"></td>
+        </tr>
+        <th scope="col">EMAIL</th>
+        <td><input type="email" class="form-control" id="txtEmailModificarClient"></td>
+        <tr>
+          <th scope="col">EDAD</th>
+          <td><input type="number" class="form-control" id="txtAgeModificarClient"></td>
+        </tr>
+        <tr>
+          <th scope="col">CONTRASEÑA</th>
+          <td><input type="password" class="form-control" id="txtPasswordModificarClient"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdModificarClient"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button id='btnClienteCrear' type="button" class="btn btn-primary"
+        onclick="CRUD('modificarCliente', '/api/Client/update', 'contenidoClientTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODIFICAR MENSAJE -->
+
+  <div id="modificarDatosMensaje" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Modificar información mensaje</h1>
+    <table id="modificarDatosMensajeTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">ID CLIENTE</th>
+          <td><input type="text" class="form-control" id="txtModificarClientMensaje"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID PATINETA</th>
+          <td><input type="text" class="form-control" id="txtModificarSkateMensaje"></td>
+        </tr>
+        <tr>
+          <th scope="col">MENSAJE</th>
+          <td><input type="text" class="form-control" id="txtTextModificarMensaje"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdModificarMensaje"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('modificarMensaje', '/api/Message/update', 'contenidoMessageTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODIFICAR CATEGORIA -->
+
+  <div id="modificarDatosCategoria" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Modificar información categoria</h1>
+    <table id="modificarDatosCategoriaTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">NOMBRE CATEGORIA</th>
+          <td><input type="text" class="form-control" id="txtModificarNombreCategoria"></td>
+        </tr>
+        <tr>
+          <th scope="col">DESCRIPCION</th>
+          <td><input type="text" class="form-control" id="txtModificarDescripcionCategoria"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdModificarCategoria"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('modificarCategoria', '/api/Category/update', 'contenidoCategoryTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODIFICAR RESERVA -->
+
+  <div id="modificarDatosReserva" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Modificar información reserva</h1>
+    <table id="modificarDatosReservaTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+
+          <th scope="col">DIA INICIO</th>
+          <td><input type="date" class="form-control" id="txtModificarStartReserva"></td>
+        </tr>
+        <tr>
+          <th scope="col">DIA DEVOLUCION</th>
+          <td><input type="date" class="form-control" id="txtModificarDevolutionReserva"></td>
+        </tr>
+        <tr>
+          <th scope="col">ESTADO</th>
+          <td>
+            <select class="form-control" id="txtIdModificarStatusReserva">
+              <option value="" selected="selected">Seleccione una opcion...</option>
+
+              <option value="completed">Completada</option>
+              <option value="cancelled">Cancelada</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="col">ID RESERVA</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdModificarReserva"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('modificarReserva', '/api/Reservation/update', 'contenidoReservationTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODIFICAR ADMIN -->
+
+  <div id="modificarDatosAdministrator" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Modificar información administrador</h1>
+    <table id="modificarDatosAdministratorTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <td><input type="text" class="form-control" id="txtModificarNameAdministrator"></td>
+        </tr>
+        <tr>
+          <th scope="col">E-MAIL</th>
+          <td><input type="email" class="form-control" id="txtModificarEmailAdministrator"></td>
+        </tr>
+        <tr>
+          <th scope="col">CONTRASEÑA</th>
+          <td><input type="password" class="form-control col-xs-2" id="txtIdModificarPasswordAdministrator"></td>
+        </tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR </th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdModificarAdministrator"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('modificarAdministrator', '/api/Admin/update', 'contenidoAdministratorTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- ELIMINAR SKATE -->
+
+  <div id="eliminarDatosSkate" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Eliminar información patineta</h1>
+    <table id="eliminarDatosSkateTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">ID A ELIMINAR</th>
+          <td><input type="number" class="form-control" id="txtIdEliminarSkate"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button id='btnSkateCrear' type="button" class="btn btn-primary"
+        onclick="CRUD('eliminarSkate', '/api/Skate/:id', 'contenidoSkateTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- ELIMINAR CLIENTE -->
+
+  <div id="eliminarDatosCliente" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Eliminar informacion cliente</h1>
+    <table id="eliminarDatosClienteTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdEliminarClient"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button id='btnClienteCrear' type="button" class="btn btn-primary"
+        onclick="CRUD('eliminarCliente', '/api/Client/:id', 'contenidoClientTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- ELIMINAR MENSAJE -->
+
+  <div id="eliminarDatosMensaje" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Eliminar información mensaje</h1>
+    <table id="eliminarDatosMensajeTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdEliminarMensaje"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('eliminarMensaje', '/api/Message/:id', 'contenidoMensajeTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- ELIMINAR CATEGORIA -->
+
+  <div id="eliminarDatosCategoria" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Eliminar información categoria</h1>
+    <table id="eliminarDatosCategoriaTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdEliminarCategoria"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('eliminarCategoria', '/api/Category/:id', 'contenidoCategoryTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <!-- ELIMINAR RESERVA -->
+
+  <div id="eliminarDatosReserva" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Eliminar información Reserva</h1>
+    <table id="eliminarDatosReservaTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdEliminarReserva"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('eliminarReserva', '/api/Reservation/:id', 'contenidoReservationTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+  <!-- ELIMINAR ADMIN -->
+
+  <div id="eliminarDatosAdministrator" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+    <h1>Eliminar información Administrator</h1>
+    <table id="eliminarDatosAdministratorTable" class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">CAMPO</th>
+          <th scope="col">VALORES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <th scope="col">ID A MODIFICAR</th>
+          <td><input type="number" class="form-control col-xs-2" id="txtIdEliminarAdministrator"></td>
+        </tr>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button type="button" class="btn btn-primary"
+        onclick="CRUD('eliminarAdministrator', '/api/Admin/:id', 'contenidoAdministratorTable');">
+        Enviar
+      </button>
+    </div>
+  </div>
+  <!-- INFORMES -->
+
+  <div class="container-fluid">
+    <div id="conteoReservas" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+      <h1>Conteo de reservas</h1>
+      <table id="modificarDatosClienteTable" class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">CAMPO</th>
+            <th scope="col">VALORES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          </tr>
+          <tr>
+            <th scope="col">FECHA INICIO</th>
+            <td><input type="date" class="form-control" id="txtfechaInicioInforme"></td>
+          </tr>
+          <tr>
+            <th scope="col">FECHA FIN</th>
+            <td><input type="date" class="form-control" id="txtfechaFinInforme"></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+
+      <table id="conteoReservasTable" class="table table-hover table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">DIA DE INICIO</th>
+            <th scope="col">DIA DE DEVOLUCION</th>
+            <th scope="col">ESTADO</th>
+            <th scope="col">CLIENTE ID</th>
+            <th scope="col">NOMBRE CLIENTE</th>
+
+
+          </tr>
+        </thead>
+        <tbody id="conteoReservasBody">
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary"
+          onclick="CRUD('receiveData', '/api/Reservation/report-dates/{startDate}/{finishDate}', 'conteoReservasTable');">
+          Consultar
+        </button>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div id="completadasVsCanceladas" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+        <h1> Conteo completadas vs canceladas</h1>
+        <table id="completadasVsCanceladasTable" class="table table-hover table-bordered" style="display: none;">
+          <thead>
+            <tr>
+              <th scope="col">COMPLETADAS</th>
+              <th scope="col">CANCELADAS</th>
+
+            </tr>
+          </thead>
+          <tbody id="completadasVsCanceladasBody">
+          </tbody>
+        </table>
+        <div>
+          <button type="button" class="btn btn-primary"
+            onclick="CRUD('receiveData', '/api/Reservation/report-status', 'completadasVsCanceladasTable');">
+            Consultar
+          </button>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div id="mejoresClientes" name='formulario' class="table-responsive col-sm-6" style="display: none;">
+          <h1>Mejores Clientes </h1>
+          <table id="mejoresClientesTable" class="table table-hover table-bordered" style="display: none;">
+            <thead>
+              <tr>
+                <th scope="col">ID CLIENTE</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">NUMERO DE RESERVAS</th>
+
+              </tr>
+            </thead>
+            <tbody id="mejoresClientesBody">
+            </tbody>
+          </table>
+          <div>
+            <button type="button" class="btn btn-primary"
+              onclick="CRUD('receiveData', '/api/Reservation/report-clients', 'mejoresClientesTable');">
+              Consultar
+            </button>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>
